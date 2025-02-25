@@ -1,11 +1,15 @@
 from typing import List, Optional
 
 import json
+import os
 
 
+
+data = []
+json_path = os.path.join(os.path.dirname(__file__), "structure.json")
 
 try:
-    with open("structure.json", "r", encoding="utf-8") as file:
+    with open(json_path, "r", encoding="utf-8") as file:
         data = json.load(file)
 except FileNotFoundError:
     print("structure.json not found. The 'data' variable will be empty.")
@@ -29,6 +33,7 @@ def dfs_search(node: dict, target_id: str) -> Optional[List[str]]:
 def find_path(tree: List[dict], target_id: str) -> Optional[List[str]]:
     for node in tree:
         path = dfs_search(node, target_id)
+        #  print("Current node:", node["uuid"])
         if path is not None:
             return path
     
