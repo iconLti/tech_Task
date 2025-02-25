@@ -4,8 +4,14 @@ import json
 
 
 
-with open("structure.json", "r", encoding="utf-8") as file:
-    data = json.load(file)
+try:
+    with open("structure.json", "r", encoding="utf-8") as file:
+        data = json.load(file)
+except FileNotFoundError:
+    print("structure.json not found. The 'data' variable will be empty.")
+except json.JSONDecodeError as err:
+    print(f"Failed to parse structure.json: {err}")
+    
     
     
 def dfs_search(node: dict, target_id: str) -> Optional[List[str]]:
