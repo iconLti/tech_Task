@@ -5,7 +5,7 @@ import uvicorn
 
 
 
-app = FastAPI(title="0.1.3")
+app = FastAPI(title="1.0.0")
 app.include_router(router)
 
 if __name__ == "__main__":
